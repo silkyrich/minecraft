@@ -1,0 +1,120 @@
+[app/ui]
+version = 6.2.0
+modtime = 1428687567.850468000
+
+[app/launcher]
+version = 6.2.0
+modtime = 1428687567.852955000
+
+[indexes/minecraft]
+owner = admin
+version = 6.2.0
+modtime = 1428687620.197653000
+
+[props/minecraft]
+owner = admin
+version = 6.2.0
+modtime = 1428687902.326409000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2Fmsm%2Fservers%2Frich%2Flogs%2Flatest.log]
+owner = admin
+version = 6.2.0
+modtime = 1428687916.746149000
+
+[inputs/monitor%3A%2F%2F%2Fopt%2Fmsm%2Fservers%2Frich%2Fserver.log]
+owner = admin
+version = 6.2.3
+modtime = 1433776083.479102000
+
+[lookups/minecraft_achievements.csv]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = nobody
+version = 6.2.3
+modtime = 1437066062.895199000
+
+[datamodels/Minecraft_log_messages]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437084299.367049000
+
+[models/Minecraft_log_messages]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437084299.371807000
+
+[inputs/splunktcp%3A%2F%2F9997]
+owner = admin
+version = 6.2.3
+modtime = 1435066551.576152000
+
+[lookups/minecraft_players]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = nobody
+version = 6.2.3
+modtime = 1437066068.676340000
+
+[views/achievements]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1436857177.437503000
+
+[views/deaths]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1436857185.934250000
+
+[views/locations]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1436857194.765802000
+
+[views/login_activity]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437131452.651743000
+
+[views/messages]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437307638.535114000
+
+[views/player]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437307703.702229000
+
+[views/server_performance]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437087434.157032000
+
+[lookups/dictionary.txt]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1437066054.904107000
+
+[nav/default]
+version = 6.2.3
+modtime = 1437087928.219852000
