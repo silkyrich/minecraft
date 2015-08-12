@@ -27,11 +27,11 @@ version = 6.2.3
 modtime = 1433776083.479102000
 
 [lookups/minecraft_achievements.csv]
-access = read : [ * ], write : [ admin, power ]
+access = read : [ * ], write : [ admin ]
 export = none
 owner = nobody
 version = 6.2.3
-modtime = 1437066062.895199000
+modtime = 1439374880.301563000
 
 [datamodels/Minecraft_log_messages]
 access = read : [ * ], write : [ admin ]
@@ -118,3 +118,17 @@ modtime = 1437066054.904107000
 [nav/default]
 version = 6.2.3
 modtime = 1437087928.219852000
+
+[transforms/dictionary_check]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1439374846.489989000
+
+[transforms/minecraft_achievement]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1439374862.295405000
