@@ -4,7 +4,7 @@
   <view name="player"/>
   <view name="deaths"/>
   <view name="login_activity" default='true'/>
-  <view name="Locations"/>
+  <view name="locations"/>
   <view name="messages"/>
   <view name="Server"/>
   <view name="data_models" />
