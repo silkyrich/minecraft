@@ -108,7 +108,7 @@
       <html>
         <h2/>
  
-        <div id="chordchart" class="splunk-view" data-require="app/custom_vizs/chordchart/chordchart" data-options="{           &quot;managerid&quot;: &quot;murder_chord&quot;,           &quot;src_field&quot;: &quot;murderer&quot;,           &quot;dst_field&quot;: &quot;victim&quot;,           &quot;colors&quot;: &quot;d3&quot;         }">
+        <div id="chordchart" class="splunk-view" data-require="app/minecraft/chordchart/chordchart" data-options="{           &quot;managerid&quot;: &quot;murder_chord&quot;,           &quot;src_field&quot;: &quot;murderer&quot;,           &quot;dst_field&quot;: &quot;victim&quot;,           &quot;colors&quot;: &quot;d3&quot;         }">
         </div>
       </html>
     </panel>

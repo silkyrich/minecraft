@@ -222,7 +222,7 @@ index=minecraft logged
       </input>
       <html>
         <h2>Recently seen users are larger</h2>
-        <div id="tagcloud" class="splunk-view" data-require="app/custom_vizs/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;player_login_word_cloud&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;name&quot;         }">
+        <div id="tagcloud" class="splunk-view" data-require="app/minecraft/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;player_login_word_cloud&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;name&quot;         }">
         </div>
      </html>
     </panel>

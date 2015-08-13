@@ -17,7 +17,7 @@ define(function(require, exports, module) {
             "lat_field": "latitude",
             "lon_field": "longitude",
             "group_by_field": null,
-            "world_image_path": "app/custom_vizs/components/globe/world_black.jpg",
+            "world_image_path": "app/minecraft/components/globe/world_black.jpg",
             "star_field": true,
             "height": 800,
             "spin_speed": 0
@@ -61,7 +61,7 @@ define(function(require, exports, module) {
                 return new DAT.Globe(that.el, {
                     img_path: SplunkUtil.make_url("/static/" + this.settings.get("world_image_path")),
                     star_field: this.settings.get("star_field"),
-                    star_field_path: SplunkUtil.make_url("/static/app/custom_vizs/components/globe/star_field.png"),
+                    star_field_path: SplunkUtil.make_url("/static/app/minecraft/components/globe/star_field.png"),
                     spin_speed: spin_speed
                 });
             }

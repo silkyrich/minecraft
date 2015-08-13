@@ -153,14 +153,14 @@
     <panel>
       <html>
         <h2>Good words</h2>
-        <div id="tagcloud" class="splunk-view" data-require="app/custom_vizs/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;word_cloud_popular_words_correct&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;token&quot;         }">
+        <div id="tagcloud" class="splunk-view" data-require="app/minecraft/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;word_cloud_popular_words_correct&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;token&quot;         }">
         </div>
      </html>
     </panel>
     <panel>
       <html>
         <h2>Spelting miskates</h2>
-        <div id="tagcloud" class="splunk-view" data-require="app/custom_vizs/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;word_cloud_popular_words_incorrect&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;token&quot;         }">
+        <div id="tagcloud" class="splunk-view" data-require="app/minecraft/tagcloud/tagcloud" data-options="{           &quot;managerid&quot;: &quot;word_cloud_popular_words_incorrect&quot;,           &quot;minFontSize&quot;: 10,           &quot;maxFontSize&quot;: 50,           &quot;valueField&quot;: &quot;count&quot;,           &quot;labelField&quot;: &quot;token&quot;         }">
         </div>
      </html>
     </panel>
