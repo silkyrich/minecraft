@@ -132,3 +132,10 @@ export = none
 owner = admin
 version = 6.2.3
 modtime = 1439374862.295405000
+
+[savedsearches/Minecraft]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1439380470.840294000
