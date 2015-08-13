@@ -110,4 +110,16 @@
       </event>
     </panel>
   </row>
+  <row>
+    <panel>
+      <event>
+        <title>Crash logs</title>
+        <search>
+          <query>index=minecraft This crash report has been saved to</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+      </event>
+    </panel>
+  </row>
 </dashboard>

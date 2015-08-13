@@ -28,7 +28,7 @@
       <![CDATA[
   
 
-index=minecraft logged
+tag=minecraft logged
 | rex field=_raw "\]: (?<name>[^ []+)( (?<logged_out>left the game)|([ /\d\.:\]\[]+(?<logged_in>logged in)))"
 | timechart span=10m values(name) as names
 | eventstats values(names) as name
@@ -290,7 +290,7 @@ index=minecraft logged
       </input>
       <html>
             <h2>Players</h2>
-            <div id="demo-view" class="splunk-view" data-require="app/gantt/components/gantt/gantt" data-options="{                     &quot;managerid&quot;: &quot;player_gantt&quot;,                     &quot;startField&quot;: &quot;_time&quot;,                     &quot;endField&quot;: &quot;last_time&quot;,                     &quot;categoryLabel&quot;: &quot;Player&quot;,                     &quot;categoryField&quot;: &quot;name&quot;,                     &quot;seriesLabel&quot;: &quot;Status&quot;,                     &quot;seriesField&quot;: &quot;status&quot;,                     &quot;extrasField&quot;: &quot;extras&quot;,                     &quot;drilldownField&quot;: &quot;name&quot;,                     &quot;compact&quot;: &quot;false&quot;,                     &quot;drilldownSearch&quot;:&quot;&quot;                    }">   </div> 
+            <div id="demo-view" class="splunk-view" data-require="app/minecraft/components/gantt/gantt" data-options="{                     &quot;managerid&quot;: &quot;player_gantt&quot;,                     &quot;startField&quot;: &quot;_time&quot;,                     &quot;endField&quot;: &quot;last_time&quot;,                     &quot;categoryLabel&quot;: &quot;Player&quot;,                     &quot;categoryField&quot;: &quot;name&quot;,                     &quot;seriesLabel&quot;: &quot;Status&quot;,                     &quot;seriesField&quot;: &quot;status&quot;,                     &quot;extrasField&quot;: &quot;extras&quot;,                     &quot;drilldownField&quot;: &quot;name&quot;,                     &quot;compact&quot;: &quot;false&quot;,                     &quot;drilldownSearch&quot;:&quot;&quot;                    }">   </div> 
         </html>
     </panel>
   </row>
