@@ -5,6 +5,7 @@
   <view name="deaths"/>
   <view name="login_activity" default='true'/>
   <view name="minecraft_locations"/>
+  <view name="geo_location"/>
   <view name="messages"/>
   <view name="Server"/>
   <view name="data_models" />
