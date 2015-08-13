@@ -17,7 +17,7 @@ define(function(require, exports, module) {
             "lat_field": "latitude",
             "lon_field": "longitude",
             "group_by_field": null,
-            "world_image_path": "app/custom_vizs/globe/world_black.jpg",
+            "world_image_path": "app/minecraft/globe/world_black.jpg",
             "star_field": true,
             "height": 800,
             "spin_speed": 0
