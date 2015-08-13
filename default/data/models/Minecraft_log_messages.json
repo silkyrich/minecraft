@@ -672,7 +672,7 @@
             ],
             "constraints": [
                 {
-                    "search": "index=minecraft just earned the achievement",
+                    "search": "tag=minecraft just earned the achievement",
                     "owner": "Messages.Achievements"
                 }
             ],
@@ -783,7 +783,7 @@
             ],
             "constraints": [
                 {
-                    "search": "index=minecraft \"game mode to\"",
+                    "search": "tag=minecraft \"game mode to\"",
                     "owner": "Messages.Gamemode_events"
                 }
             ],
