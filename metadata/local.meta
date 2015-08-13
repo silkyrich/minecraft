@@ -151,3 +151,10 @@ modtime = 1439471076.151283000
 owner = admin
 version = 6.2.3
 modtime = 1439471721.961075000
+
+[views/minecraft_locations]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1439489694.664917000
