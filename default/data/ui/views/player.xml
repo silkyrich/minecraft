@@ -1,5 +1,5 @@
 <form>
-  <label>Player</label>
+  <label>Player Detail</label>
   <fieldset submitButton="false">
     <input type="dropdown" token="player" searchWhenChanged="true">
       <label>name</label>
@@ -49,6 +49,36 @@
      count by classification
 ]]>
     </query>
+  </search>
+  <search id="time_spent_in_game">
+    <earliest>0</earliest>
+    <latest></latest>
+    <query>| pivot Minecraft_log_messages Login_location      
+         count(Login_location) AS "logged_in"      
+         SPLITROW _time AS _time PERIOD second      
+         SPLITROW name AS name        
+         FILTER name is $player$ 
+         SORT 10000000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1  
+      | eval logged_out=0  
+      | append  [    
+          | pivot Minecraft_log_messages Log_out count(Log_out) AS "logged_out" 
+                SPLITROW _time AS _time PERIOD second 
+                SPLITROW name AS name 
+                  SORT 100000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1   
+          | eval logged_in=0 ]
+      
+       | eval time=strptime(_time, "%Y-%m-%dT%H:%M:%S") 
+       | sort - time 
+       | streamstats current=f last(time) as last_time by name 
+       | eval period=if(logged_in=0,"Logged out", "Logged in") 
+       | addinfo 
+       | eval duration=if(isNull(last_time),info_max_time-time,last_time-time) 
+       | where logged_in=1 
+       | sort - time 
+       | eval duration_hours=duration/(60*60) 
+       | eval _time=time 
+       | timechart span=1d sum(duration_hours) as hours 
+       | eval hours=round(hours,2)</query>
   </search>
   <row depends="$player$">
     <panel>
@@ -133,6 +163,52 @@
     </panel>
   </row>
   <row depends="$player$">
+    <panel>
+      <chart>
+        <title>Time spend on server</title>
+        <search base="time_spent_in_game"></search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Geographic locations and IP addresses</title>
+        <search>
+          <query>| pivot Minecraft_log_messages Login_location count(Login_location) AS count SPLITROW ip AS ip SPLITROW ip_Country AS ip_Country SPLITROW ip_Region AS ip_Region SPLITROW ip_City AS ip_City FILTER name is $player$ SORT 100 name ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">undefined</option>
+        <option name="rowNumbers">undefined</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row depends="$player$">
     <panel depends="$player$">
       <chart>
         <title>Suicide methods</title>
@@ -204,7 +280,7 @@
    SPLITROW item_b AS item_b 
    SPLITROW ammount_b AS ammount_b 
    FILTER name is $player$ 
-   SORT 100000 item_b ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
+   SORT 10000000 item_b ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
 | eval total=ammount_b*count
 | rename item_b as item
 | table item total</query>

@@ -1,12 +1,16 @@
-<nav search_view="search" color="#65A637">
+<nav search_view="search" color="#65A637"> 
   <view name="search"/>
-  <view name="achievements"/>
-  <view name="player"/>
-  <view name="deaths"/>
-  <view name="login_activity" default='true'/>
-  <view name="minecraft_locations"/>
-  <view name="geo_location"/>
-  <view name="messages"/>
+  <collection label="Player Activities">
+ 	  <view name="player"/>
+      <view name="login_activity" default='true'/>
+      <view name="messages"/>
+     <view name="geo_location"/>
+  </collection>
+  <collection label="Game Activities">
+     <view name="achievements"/>
+     <view name="deaths"/>
+     <view name="minecraft_locations"/>
+  </collection>
   <view name="Server"/>
   <view name="data_models" />
   <view name="alerts" />

@@ -122,4 +122,16 @@
       </event>
     </panel>
   </row>
+  <row>
+    <panel>
+      <event>
+        <title>Fatal events</title>
+        <search>
+          <query>index=minecraft FATAL</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+      </event>
+    </panel>
+  </row>
 </dashboard>
