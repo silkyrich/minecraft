@@ -3,7 +3,7 @@
     "displayName": "Minecraft log messages",
     "description": "",
     "objectSummary": {
-        "Event-Based": 15,
+        "Event-Based": 16,
         "Transaction-Based": 0,
         "Search-Based": 0
     },
@@ -1709,6 +1709,105 @@
                 }
             ],
             "lineage": "Messages.given_items.levels"
+        },
+        {
+            "objectName": "UUID",
+            "displayName": "UUID",
+            "parentName": "Messages",
+            "fields": [
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": "",
+                    "fieldSearch": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": "",
+                    "fieldSearch": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": "",
+                    "fieldSearch": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": "",
+                    "fieldSearch": ""
+                }
+            ],
+            "calculations": [
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "player",
+                            "owner": "Messages.UUID",
+                            "type": "string",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "player",
+                            "comment": "",
+                            "fieldSearch": ""
+                        },
+                        {
+                            "fieldName": "uuid",
+                            "owner": "Messages.UUID",
+                            "type": "string",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "uuid",
+                            "comment": "",
+                            "fieldSearch": ""
+                        }
+                    ],
+                    "inputField": "_raw",
+                    "calculationID": "y7ea15b0vmj10pb9",
+                    "owner": "Messages.UUID",
+                    "editable": true,
+                    "comment": "",
+                    "calculationType": "Rex",
+                    "expression": "UUID of player (?<player>[^\\s]+) is (?<uuid>.*)"
+                }
+            ],
+            "constraints": [
+                {
+                    "search": "UUID",
+                    "owner": "Messages.UUID"
+                }
+            ],
+            "lineage": "Messages.UUID"
         }
     ],
     "objectNameList": [
@@ -1726,6 +1825,7 @@
         "Murder",
         "Manslaughter",
         "expirence",
-        "levels"
+        "levels",
+        "UUID"
     ]
 }
