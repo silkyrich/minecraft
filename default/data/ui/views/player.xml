@@ -164,6 +164,19 @@
   </row>
   <row depends="$player$">
     <panel>
+      <single>
+        <title>UUID</title>
+        <search>
+          <query>| pivot Minecraft_log_messages UUID values(uuid) AS "Distinct Values of uuid" FILTER player is $player$ ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+  </row>
+  <row depends="$player$">
+    <panel>
       <chart>
         <title>Time spend on server</title>
         <search base="time_spent_in_game"></search>
@@ -191,7 +204,7 @@
       </chart>
     </panel>
   </row>
-  <row>
+  <row depends="$player$">
     <panel>
       <table>
         <title>Geographic locations and IP addresses</title>
@@ -416,7 +429,7 @@
       <table>
         <title>Recent messages</title>
         <search>
-          <query>| pivot Minecraft_log_messages Chat_messages values(message) AS "messages" SPLITROW _time AS _time PERIOD second FILTER name is $player$ SORT 10000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 | fields - _time</query>
+          <query>| pivot Minecraft_log_messages Chat_messages values(message) AS "messages" SPLITROW _time AS _time PERIOD second FILTER name is $player$ SORT 100000000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 | fields - _time</query>
           <earliest>$time_messages.earliest$</earliest>
           <latest>$time_messages.latest$</latest>
         </search>
