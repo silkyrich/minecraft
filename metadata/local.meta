@@ -13,18 +13,8 @@ modtime = 1428687620.197653000
 
 [props/minecraft]
 owner = admin
-version = 6.2.0
-modtime = 1428687902.326409000
-
-[inputs/monitor%3A%2F%2F%2Fopt%2Fmsm%2Fservers%2Frich%2Flogs%2Flatest.log]
-owner = admin
-version = 6.2.0
-modtime = 1428687916.746149000
-
-[inputs/monitor%3A%2F%2F%2Fopt%2Fmsm%2Fservers%2Frich%2Fserver.log]
-owner = admin
 version = 6.2.3
-modtime = 1433776083.479102000
+modtime = 1439837221.570458000
 
 [lookups/minecraft_achievements.csv]
 access = read : [ * ], write : [ admin ]
@@ -38,14 +28,14 @@ access = read : [ * ], write : [ admin ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1437084299.367049000
+modtime = 1439914524.203622000
 
 [models/Minecraft_log_messages]
 access = read : [ * ], write : [ admin ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1437084299.371807000
+modtime = 1439914524.208500000
 
 [inputs/splunktcp%3A%2F%2F9997]
 owner = admin
@@ -99,14 +89,14 @@ access = read : [ * ], write : [ admin ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1437307703.702229000
+modtime = 1439560856.309091000
 
 [views/server_performance]
 access = read : [ * ], write : [ admin ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1439469191.189466000
+modtime = 1439561645.431638000
 
 [lookups/dictionary.txt]
 access = read : [ * ], write : [ admin ]
@@ -145,7 +135,7 @@ access = read : [ * ], write : [ admin ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1439471076.151283000
+modtime = 1439558029.721509000
 
 [indexes/tmp]
 owner = admin
@@ -158,3 +148,32 @@ export = none
 owner = admin
 version = 6.2.3
 modtime = 1439489694.664917000
+
+[tags/index%3Dminecraft]
+version = 6.2.3
+modtime = 1439558535.485768000
+
+[savedsearches/anonymise_logs]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1439750859.033131000
+
+[inputs/monitor%3A%2F%2F%24SPLUNK_HOME%2Fetc%2Fapps%2Fminecraft%2Fsample.log.gz]
+version = 6.2.3
+modtime = 1439808744.527039000
+
+[inputs/monitor%3A%2F%2F%2FApplications%2FSplunk%2Fetc%2Fapps%2Fminecraft%2Fsampledata%2Fminecraft.logs]
+owner = admin
+version = 6.2.3
+modtime = 1439886077.332443000
+
+[inputs/monitor%3A%2F%2F%2FApplications%2FSplunk%2Fetc%2Fapps%2Fminecraft%2Fsampledata%2Fminecraft_sample.log]
+version = 6.2.3
+modtime = 1439910494.660454000
+
+[tags/index%3Dminecraft-sample/minecraft]
+owner = admin
+version = 6.2.3
+modtime = 1439911628.632254000
