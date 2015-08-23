@@ -65,7 +65,7 @@
             "calculations": [],
             "constraints": [
                 {
-                    "search": "tag=minecraft (\"left the game\") OR (logged AND in AND with AND entity AND id AND at) OR \n\": \\<*\\>\" OR \nslain OR \n(just AND earned AND the AND achievement) OR \n(game AND mode AND to) OR \n(given) \nOR (fell AND from AND a AND high place) OR (was AND blown AND up AND by) OR (tried AND to AND swim AND in AND lava) OR (was AND shot AND by) OR (burned AND to AND death) OR (hit AND the AND ground AND too AND hard) OR (fell AND out AND of AND the AND world) OR (drowned) OR (blew AND up) OR \n(Starting AND minecraft AND server) OR (Default AND game AND type) OR (\"Stopping server\") OR (\"Default game type\")",
+                    "search": "tag=minecraft",
                     "owner": "Messages"
                 }
             ],
@@ -672,7 +672,7 @@
             ],
             "constraints": [
                 {
-                    "search": "tag=minecraft just earned the achievement",
+                    "search": "tag=minecraft \"just earned the achievement\"",
                     "owner": "Messages.Achievements"
                 }
             ],
@@ -1353,7 +1353,7 @@
             ],
             "constraints": [
                 {
-                    "search": "(Starting minecraft server) OR (Default game type) OR (Stopping server) OR (\"Default game type\")",
+                    "search": "\"Starting minecraft server\" OR \"Default game type\" OR \"Stopping server\" OR \"Default game type\"",
                     "owner": "Messages.Server_Events"
                 }
             ],
