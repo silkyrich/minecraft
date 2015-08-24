@@ -52,6 +52,7 @@
   <row>
     <panel>
       <event>
+      <title>Skipped ticks in the last seven days</title>
         <search>
           <query>index=minecraft skipping | rex field=_raw "Running (?&lt;behind_ms&gt;\d+)ms behind, skipping (?&lt;skipping_ticks&gt;\d+) tick" | table _time behind_ms</query>
           <earliest>-7d@h</earliest>
