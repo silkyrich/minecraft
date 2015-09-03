@@ -36,7 +36,7 @@
   <row>
     <panel>
       <html>
-        <h2>Sunburst of ssh attacks and the source country</h2>
+        <h2>Sunburst of logins, by user and a source location</h2>
 
         <div id="sunburst" class="splunk-view" data-require="app/minecraft/sunburst/sunburst" data-options="{           &quot;managerid&quot;: &quot;myglobal&quot;,           &quot;height&quot;: 800,           &quot;valueField&quot;: &quot;logins&quot;,           &quot;categoryFields&quot;: &quot;Country Region City ord1 ord2 ord3 ord4 logins&quot;,           &quot;chartTitle&quot;: &quot;Index&quot;         }">        </div>      </html>
     </panel>
