@@ -13,5 +13,4 @@
   <view name="pivot" />
   <view name="reports" />
   <view name="alerts" />
-  <view name="dashboards" /> 
 </nav>
