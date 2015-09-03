@@ -1,19 +1,17 @@
 <nav search_view="search" color="#65A637"> 
   <view name="search"/>
-  <collection label="Player Activities">
+  <collection label="Dashboards">
      <view name="player"/>
      <view name="login_activity" default='true'/>
      <view name="messages"/>
      <view name="geo_locations"/>
-  </collection>
-  <collection label="Game Activities">
      <view name="achievements"/>
      <view name="deaths"/>
      <view name="minecraft_locations"/>
      <view name="server_performance"/>
   </collection>
-  <view name="Server"/>
-  <view name="data_models" />
+  <view name="pivot" />
+  <view name="reports" />
   <view name="alerts" />
-  <view name="dashboards" />
+  <view name="dashboards" /> 
 </nav>
