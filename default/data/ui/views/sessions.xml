@@ -1,0 +1,83 @@
+<form script="autodiscover.js">
+  <label>Login Activity</label>
+  <fieldset submitButton="false">
+    <input type="dropdown" token="player" searchWhenChanged="true">
+      <label>name</label>
+      <search>
+        <query>| pivot Minecraft_log_messages Login_location values(name) AS "name" ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 | mvexpand name | sort - name</query>
+      </search>
+      <fieldForLabel>name</fieldForLabel>
+      <fieldForValue>name</fieldForValue>
+    </input>
+  </fieldset>
+  <search id="player_gantt">
+    <earliest>$time_gantt.earliest$</earliest>
+    <latest>$time_gantt.latest$</latest>
+    <query>
+      <![CDATA[
+
+| pivot Minecraft_log_messages 
+   Login_location count(Login_location) AS "logged_in" 
+   SPLITROW _time AS _time PERIOD second 
+   SPLITROW name AS name SPLITROW ip AS ip 
+   SPLITROW coord_label AS coord_label 
+   SPLITROW ip_Country AS ip_Country 
+   SPLITROW ip_Region AS ip_Region 
+   SPLITROW ip_City AS ip_City 
+   SPLITROW ip_lat AS ip_lat 
+   SPLITROW ip_lon AS ip_lon 
+     SORT 10000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
+| eval logged_out=0 
+| append 
+[ 
+  | pivot Minecraft_log_messages 
+      Log_out count(Log_out) AS "logged_out" 
+      SPLITROW _time AS _time PERIOD second 
+      SPLITROW name AS name 
+         SORT 10000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
+  | eval logged_in=0
+]
+| sort - _time
+| streamstats current=f max(_time) as max_time last(_time) as last_time by name  
+| eventstats max(_time) as max_time  by name
+| eval status=if(logged_in=0,"Logged out Period", "Logged in Period")
+
+| addinfo
+| eval ip_Region=if(isNull(ip_Region),"",ip_Region)
+| eval ip_City=if(isNull(ip_City),"",ip_City)
+| eval ip_Country=if(isNull(ip_Country),"",ip_Country)
+| eval ip_lon=if(isNull(ip_lon),"",ip_lon)
+| eval ip_lat=if(isNull(ip_lat),"",ip_lat)
+|  eval extras="{\"Login coordinates\": \"".coord_label +
+       "\",\"Country\": \"".ip_Country +
+       "\",\"Region\": \"".ip_Region +
+       "\",\"City\": \"".ip_City +
+       "\",\"lon\": \"".ip_lon +
+       "\", \"lat\": \"".ip_lat."\"}"
+| table *
+| where _time=max_time AND !isNull(coord_label) OR status="Logged in Period"
+| eval status=if(_time=max_time,"Currently logged in",status)
+| eval last_time=if(_time=max_time,info_max_time,last_time)
+
+]]>
+    </query>
+  </search>
+  
+
+  <row>
+    <panel>
+      <title>Recent login activity</title>
+      <input type="time" token="time_gantt" searchWhenChanged="true">
+        <label></label>
+        <default>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <html>
+            <h2>Players</h2>
+            <div id="demo-view" class="splunk-view" data-require="app/minecraft/components/gantt/gantt" data-options="{                     &quot;managerid&quot;: &quot;player_gantt&quot;,                     &quot;startField&quot;: &quot;_time&quot;,                     &quot;endField&quot;: &quot;last_time&quot;,                     &quot;categoryLabel&quot;: &quot;Player&quot;,                     &quot;categoryField&quot;: &quot;name&quot;,                     &quot;seriesLabel&quot;: &quot;Status&quot;,                     &quot;seriesField&quot;: &quot;status&quot;,                     &quot;extrasField&quot;: &quot;extras&quot;,                     &quot;drilldownField&quot;: &quot;name&quot;,                     &quot;compact&quot;: &quot;false&quot;,                     &quot;drilldownSearch&quot;:&quot;&quot;                    }">   </div> 
+        </html>
+    </panel>
+  </row>
+</form>

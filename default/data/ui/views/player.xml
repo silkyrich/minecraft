@@ -21,7 +21,7 @@
      SPLITROW _time AS _time PERIOD second 
      SPLITROW name AS name 
      FILTER name is "$player$"
-        SORT 100000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
+        SORT 1000000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1
 | eval message=replace(lower(message),"[#,!.*?()$\- ):0-9<>]|'s"," ")  
 | makemv delim=" " message 
 | mvexpand message 
@@ -31,12 +31,16 @@
 | sort token 
 | join type=left token 
 [
-    | pivot Minecraft_log_messages Login_location values(name) AS "name" ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 
+    | pivot Minecraft_log_messages Login_location values(name) AS "name" 
+          FILTER name is "$player$"
+          ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 
        | mvexpand name 
        | eval name=replace(lower(name),"[0-9]","") 
     | append 
     [
-       | pivot Minecraft_log_messages Login_location values(name) AS "name" ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 
+       | pivot Minecraft_log_messages Login_location values(name) AS "name" 
+          FILTER name is "$player$"  
+          ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1 
        | mvexpand name 
        | eval name=lower(name) 
     ] 
@@ -51,23 +55,24 @@
     </query>
   </search>
   <search id="time_spent_in_game">
-    <earliest>0</earliest>
-    <latest></latest>
-    <query>| pivot Minecraft_log_messages Login_location      
+    <query>
+      <![CDATA[
+      | pivot Minecraft_log_messages Login_location      
          count(Login_location) AS "logged_in"      
          SPLITROW _time AS _time PERIOD second      
          SPLITROW name AS name        
-         FILTER name is $player$ 
+         FILTER name is "$player$" 
          SORT 10000000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1  
       | eval logged_out=0  
       | append  [    
           | pivot Minecraft_log_messages Log_out count(Log_out) AS "logged_out" 
                 SPLITROW _time AS _time PERIOD second 
                 SPLITROW name AS name 
+                FILTER name is "$player$"  
                   SORT 100000 _time ROWSUMMARY 0 COLSUMMARY 0 NUMCOLS 0 SHOWOTHER 1   
           | eval logged_in=0 ]
       
-       | eval time=strptime(_time, "%Y-%m-%dT%H:%M:%S") 
+       | eval time=_time
        | sort - time 
        | streamstats current=f last(time) as last_time by name 
        | eval period=if(logged_in=0,"Logged out", "Logged in") 
@@ -77,8 +82,11 @@
        | sort - time 
        | eval duration_hours=duration/(60*60) 
        | eval _time=time 
-       | timechart span=1d sum(duration_hours) as hours 
-       | eval hours=round(hours,2)</query>
+       | timechart span=1w sum(duration_hours) as hours 
+       | eval hours=round(hours,2)
+]]>
+    
+    </query>
   </search>
   <row depends="$player$">
     <panel>
@@ -177,6 +185,13 @@
   </row>
   <row depends="$player$">
     <panel>
+      <input type="time" token="time_spent_in_game" searchWhenChanged="true">
+        <label></label>
+        <default>
+          <earliest>-1mon@mon</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
       <chart>
         <title>Time spend on server</title>
         <search base="time_spent_in_game"></search>
